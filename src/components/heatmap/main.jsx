@@ -27,7 +27,7 @@ export const Heatmap = () => {
 
         }
         let countMonthIndex = 0
-        while (today.getFullYear() !== endday.getFullYear() || today.getMonth() !== endday.getMonth() || today.getDate() !== endday.getDate()) {
+        while (today.getFullYear() !== endday.getFullYear() || today.getMonth() !== endday.getMonth() || today.getDate() >= endday.getDate()) {
             console.log("I work")
             if (endday.getDate() === 1 && endday.getDay() !== 0) {
                 for (let i = 0; i < endday.getDay(); i++) {

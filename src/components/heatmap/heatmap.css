@@ -26,6 +26,7 @@
     /* height: inherit; */
     width: auto;
     margin-right: 20px;
+    margin-top: auto;
     /* justify-content: ; */
     /* align-items: flex-end; */
 }
@@ -36,14 +37,16 @@
     min-width: 20px;
     height: var(--stBoxHeight);
     min-height: 20px;
-    border-radius: 1.5px;
+    border-radius: 4.5px;
     background-color: rgb(134, 134, 134);
 }
 
 .empty-box {
     margin: 1px;
     width: var(--stBoxWidth);
+    min-width: 20px;
     height: var(--stBoxHeight);
-    border-radius: 1.5px;
+    min-height: 20px;
+    border-radius: 4.5px;
     background-color: rgb(87, 87, 87);
 }

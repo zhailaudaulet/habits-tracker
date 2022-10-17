@@ -1,0 +1,37 @@
+.heatmap {
+    width: 1700px;
+    height: 154px;
+    background-color: rgb(87, 87, 87);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    justify-content: space-between;
+}
+
+.months {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    height: inherit;
+    /* height: inherit;
+    width:min-content; */
+    margin-right: 20px;
+}
+
+.standard-box {
+    margin: 1px;
+    width: 20px;
+    height: 20px;
+    border-radius: 3.5px;
+    background-color: rgb(134, 134, 134);
+}
+
+.empty-box {
+    margin: 1px;
+    width: 20px;
+    height: 20px;
+    border-radius: 3.5px;
+    background-color: rgb(87, 87, 87);
+}

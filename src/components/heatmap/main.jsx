@@ -4,6 +4,7 @@ import "./heatmap.css";
 import { v4 as uuid } from 'uuid';
 
 export const Heatmap = () => {
+
     const getDaysArray = () => {
         var daylist = [[], [], [], [], [], [], [], [], [], [], [], [], []]
         const today = new Date()
@@ -61,21 +62,18 @@ export const Heatmap = () => {
                     fill: "standard-box"
                 }
             )
-            
-            
+
+
             endday.setDate(endday.getDate() + 1)
-            if (endday.getDate()===1) {
+            if (endday.getDate() === 1) {
                 countMonthIndex++
             }
-            
+
         }
-
-
         console.log(daylist)
         return daylist
     }
     let daylist = getDaysArray()
-
 
 
     return (
@@ -84,7 +82,7 @@ export const Heatmap = () => {
                 <div className='months' key={uuid()} month={index}>
 
                     {monthArray.map((item) => (
-                        <div className={`${item.fill}`} key={uuid()} date={`${item.data.date}-${item.data.month}-${item.data.year}`}>
+                        <div className={`${item.fill}`} key={uuid()} id={`${item.data.date}-${item.data.month}-${item.data.year}`}>
 
                         </div>
                     ))}

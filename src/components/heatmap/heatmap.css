@@ -1,12 +1,20 @@
+:root{
+    --stBoxWidth: 1vw;
+    --stBoxHeight: 1vw;
+}
+
 .heatmap {
-    width: 1700px;
-    height: 154px;
+    width: 100vw;
+    min-width: 2400px;
+    height: calc(8*var(--stBoxHeight));
+    min-height: calc(7*21px);
     background-color: rgb(87, 87, 87);
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     border-radius: 5px;
-    justify-content: space-between;
+    align-items: baseline;
+    justify-content: center;
 }
 
 .months {
@@ -15,23 +23,27 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     height: inherit;
-    /* height: inherit;
-    width:min-content; */
+    /* height: inherit; */
+    width: auto;
     margin-right: 20px;
+    /* justify-content: ; */
+    /* align-items: flex-end; */
 }
 
 .standard-box {
     margin: 1px;
-    width: 20px;
-    height: 20px;
-    border-radius: 3.5px;
+    width: var(--stBoxWidth);
+    min-width: 20px;
+    height: var(--stBoxHeight);
+    min-height: 20px;
+    border-radius: 1.5px;
     background-color: rgb(134, 134, 134);
 }
 
 .empty-box {
     margin: 1px;
-    width: 20px;
-    height: 20px;
-    border-radius: 3.5px;
+    width: var(--stBoxWidth);
+    height: var(--stBoxHeight);
+    border-radius: 1.5px;
     background-color: rgb(87, 87, 87);
 }

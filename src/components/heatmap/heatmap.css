@@ -4,7 +4,8 @@
 }
 
 .heatmap {
-    width: 100vw;
+    max-width: 1870px;
+    min-width: 1800px;
     /* min-width: 2400px; */
     height: calc(8*var(--stBoxHeight));
     /* min-height: calc(7*21px); */
@@ -17,13 +18,14 @@
     justify-content: center;
     overflow: scroll;
     margin-bottom: 50px;
+    padding: 5px;
 }
 
 .months {
     display: inline-flex;
     flex-direction: column;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    /* justify-content: center; */
     height: inherit;
     /* height: inherit; */
     width: auto;
@@ -63,4 +65,12 @@
     flex-direction: column;
     justify-content: space-between;
     color: rgb(202, 201, 201);
+}
+
+.infoBox{
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    background-color: rgb(202, 201, 201);;
 }

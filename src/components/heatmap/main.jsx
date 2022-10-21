@@ -75,6 +75,19 @@ export const Heatmap = () => {
     }
     let daylist = getDaysArray()
 
+    const showDataHM = (event) => {
+        let x = document.getElementById(event.target.id).getBoundingClientRect().left;
+        let y = document.getElementById(event.target.id).getBoundingClientRect().top - 30;
+        console.log(x, y);
+        if (event.target.id != "pusto-empty-pusto") {
+            let info = document.getElementById("infoBox")
+            info.style.left = `${x}px`
+            info.style.top = `${y}px`
+            info.textContent = `${event.target.id}`
+            info.style.display = "flex"
+        }
+
+    }
 
     return (
         <div className='heatmap'>
@@ -83,20 +96,24 @@ export const Heatmap = () => {
                 <div>Tue</div>
                 <div>Thu</div>
                 <div>Sat</div>
-           
+
             </div>
             {daylist.map((monthArray, index) => (
                 <div className='months' key={uuid()} month={index}>
 
                     {monthArray.map((item) => (
-                        <div className={`${item.fill}`} key={uuid()} id={`${item.data.date}-${item.data.month}-${item.data.year}`}>
+                        <div className={`${item.fill}`} key={uuid()} id={`${item.data.date}-${item.data.month}-${item.data.year}`} onMouseOver={showDataHM}>
 
                         </div>
                     ))}
 
+
                 </div>
 
             ))}
+            <div id='infoBox' className='infoBox' style={{ display: "none" }}>
+
+            </div>
         </div>
     )
 

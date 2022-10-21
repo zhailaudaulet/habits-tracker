@@ -29,7 +29,7 @@ export const Heatmap = () => {
         }
         let countMonthIndex = 0
         while (today.getFullYear() !== endday.getFullYear() || today.getMonth() !== endday.getMonth() || today.getDate() >= endday.getDate()) {
-            console.log("I work")
+            // console.log("I work")
             if (endday.getDate() === 1 && endday.getDay() !== 0) {
                 for (let i = 0; i < endday.getDay(); i++) {
                     daylist[countMonthIndex].push(
@@ -78,6 +78,13 @@ export const Heatmap = () => {
 
     return (
         <div className='heatmap'>
+            <div className='weeks'>
+                <div>Sun</div>
+                <div>Tue</div>
+                <div>Thu</div>
+                <div>Sat</div>
+           
+            </div>
             {daylist.map((monthArray, index) => (
                 <div className='months' key={uuid()} month={index}>
 

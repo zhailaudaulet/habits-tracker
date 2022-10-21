@@ -1,3 +1,11 @@
-.basicClass{
+.habitTrack {
+    height: 300px; 
+    width: 100vw; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center
+}
+
+.basicClass {
     background-color: teal !important;
 }

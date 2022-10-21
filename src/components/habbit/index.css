@@ -9,3 +9,7 @@
 .basicClass {
     background-color: teal !important;
 }
+.button{
+    height: fit-content;
+    width: fit-content;
+}

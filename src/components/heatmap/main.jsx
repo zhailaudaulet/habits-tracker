@@ -2,8 +2,24 @@ import React from 'react';
 import { useEffect } from 'react';
 import "./heatmap.css";
 import { v4 as uuid } from 'uuid';
+import { local } from 'd3';
 
 export const Heatmap = () => {
+
+    
+    
+    const getDataFromStorage = () => {
+        let itemSet = "sss"
+        if (localStorage.getItem('trackedHabits') != null) {
+            itemSet = localStorage.getItem('trackedHabits')
+            console.log(itemSet);
+        }else{
+            console.log("no such Item");
+        }
+        return itemSet
+    }
+
+    useEffect(()=>{let itemSet = getDataFromStorage()},[])
 
     const getDaysArray = () => {
         var daylist = [[], [], [], [], [], [], [], [], [], [], [], [], []]
@@ -76,17 +92,22 @@ export const Heatmap = () => {
     let daylist = getDaysArray()
 
     const showDataHM = (event) => {
-        let x = document.getElementById(event.target.id).getBoundingClientRect().left;
-        let y = document.getElementById(event.target.id).getBoundingClientRect().top - 30;
-        console.log(x, y);
+        let x = 10 + document.getElementById(event.target.id).getBoundingClientRect().left;
+        let y = document.getElementById(event.target.id).getBoundingClientRect().top - 20;
         if (event.target.id != "pusto-empty-pusto") {
             let info = document.getElementById("infoBox")
             info.style.left = `${x}px`
             info.style.top = `${y}px`
             info.textContent = `${event.target.id}`
-            info.style.display = "flex"
+            setTimeout(()=>{
+                info.style.display = "flex"
+            }, 500)
         }
+    }
 
+    const hideDataHM = () => {
+        let info = document.getElementById("infoBox")
+        info.style.display = "none"
     }
 
     return (
@@ -102,7 +123,7 @@ export const Heatmap = () => {
                 <div className='months' key={uuid()} month={index}>
 
                     {monthArray.map((item) => (
-                        <div className={`${item.fill}`} key={uuid()} id={`${item.data.date}-${item.data.month}-${item.data.year}`} onMouseOver={showDataHM}>
+                        <div className={`${item.fill}`} key={uuid()} id={`${item.data.date}-${item.data.month}-${item.data.year}`} onMouseOver={showDataHM} onMouseOut={hideDataHM}>
 
                         </div>
                     ))}

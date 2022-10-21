@@ -5,11 +5,12 @@ import { Habit } from './components/habbit/index'
 
 
 function App() {
+
   return (
     <div className='page'>
       <Navbar />
       <div style={{ "position": "absolute" }}> hello world </div>
-      <Heatmap />
+      <Heatmap/>
       <Habit />
 
     </div>

@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import "./index.css";
 import { HexColorPicker } from "react-colorful";
 import { v4 as uuid } from 'uuid';
+import { AddNewHabit } from './addHabbits';
 
 export const Habit = () => {
 
@@ -24,9 +25,7 @@ export const Habit = () => {
                 <button className='button' onClick={() => trackTheHabbit()}>
                     Track the habit
                 </button>
-                <button className='button' onClick={() => trackTheHabbit()}>
-                    Add new habbit
-                </button>
+                <AddNewHabit/>
             </div>
         </>
     )

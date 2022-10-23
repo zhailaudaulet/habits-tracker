@@ -3,19 +3,14 @@ import { useEffect } from 'react';
 import "./index.css";
 import { HexColorPicker } from "react-colorful";
 
-export const Habit = () => {
+export const  AddNewHabit = () => {
 
-    const trackTheHabbit = () => {
-        let today = new Date()
-        let dayData = `${today.getDate()}-${today.getMonth()}-${today.getFullYear()}`
-        console.log(document.getElementById(dayData).classList.add("basicClass"))
-    }
+
     const [color, setColor] = useState("#aabbcc")
-
-
     return (
         <>
             <div className='addHabits'>
+                <button>Add habbit</button>
                 <HexColorPicker color={color} onChange={(value) => setColor(value)} />
             </div>
         </>

@@ -8,18 +8,9 @@ export const Heatmap = () => {
 
     
     
-    const getDataFromStorage = () => {
-        let itemSet = "sss"
-        if (localStorage.getItem('trackedHabits') != null) {
-            itemSet = localStorage.getItem('trackedHabits')
-            console.log(itemSet);
-        }else{
-            console.log("no such Item");
-        }
-        return itemSet
-    }
 
-    useEffect(()=>{let itemSet = getDataFromStorage()},[])
+
+    
 
     const getDaysArray = () => {
         var daylist = [[], [], [], [], [], [], [], [], [], [], [], [], []]

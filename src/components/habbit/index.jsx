@@ -5,8 +5,9 @@ import { HexColorPicker } from "react-colorful";
 import { v4 as uuid } from 'uuid';
 import { AddNewHabit } from './addHabbits';
 
-export const Habit = () => {
-
+export const Habit = ({itemSet}) => {
+    
+    console.log(itemSet);
     const trackTheHabbit = () => {
         let today = new Date()
         let dayData = `${today.getDate()}-${today.getMonth()}-${today.getFullYear()}`
@@ -14,6 +15,8 @@ export const Habit = () => {
         
     }
     const [color, setColor] = useState("#aabbcc")
+
+
 
     let habitList = {
 

@@ -18,7 +18,7 @@ export const Heatmap = () => {
         var endday = new Date()
         const currentYear = today.getFullYear()
         endday.setFullYear(currentYear - 1)
-        console.log(endday.getDay());
+
         for (let i = 0; i < endday.getDay(); i++) {
             daylist[0].push(
                 {
@@ -77,7 +77,7 @@ export const Heatmap = () => {
             }
 
         }
-        console.log(daylist)
+
         return daylist
     }
     let daylist = getDaysArray()

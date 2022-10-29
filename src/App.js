@@ -39,7 +39,7 @@ function App() {
   // Launching it on first load
   useEffect(() => {
     dataSetting()
-  }, [])
+  }, [itemSet])
 
 
   // function that gets data from local storage

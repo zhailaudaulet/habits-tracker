@@ -5,9 +5,9 @@ import { HexColorPicker } from "react-colorful";
 import { v4 as uuid } from 'uuid';
 import { AddNewHabit } from './addHabbits';
 
-export const Habit = ({ itemSet, setItemSet }) => {
+export const Habit = ({ itemSet, setItemSet, habits, setHabits }) => {
 
-    console.log(itemSet);
+
     const trackTheHabbit = () => {
         let today = new Date()
         let dayData = `${today.getDate()}-${today.getMonth()}-${today.getFullYear()}`
@@ -20,7 +20,7 @@ export const Habit = ({ itemSet, setItemSet }) => {
                     id: `${dayData}`,
                     class: "basicClass"
                 }
-            ])  
+            ])
         }
 
 
@@ -36,6 +36,13 @@ export const Habit = ({ itemSet, setItemSet }) => {
 
     return (
         <>
+            <div className='habitNames'>
+                {habits.map((item, index) => (
+                <div key={uuid()} className='habitNameBlocks' id = {item.name} index={index}>
+                    <div>{item.name}</div>
+                </div>
+                ))}
+            </div>
             <div className='habitTrack'>
                 <button className='button' onClick={() => trackTheHabbit()}>
                     Track the habit

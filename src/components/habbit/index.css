@@ -1,15 +1,40 @@
 .habitTrack {
-    height: 300px; 
-    width: 100vw; 
-    display: flex; 
-    align-items: center; 
+    height: 300px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
     justify-content: center
 }
 
 .basicClass {
     background-color: teal !important;
 }
-.button{
+
+.button {
     height: fit-content;
     width: fit-content;
+}
+
+.habitNames {
+    width: 100vw;
+    height: 60px;
+    background-color: aquamarine;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.habitNameBlocks {
+    height: inherit;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: teal;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    margin-right: 5px;
+}
+.habitNameBlocks:hover{
+    background-color: rgb(0, 95, 95);
 }

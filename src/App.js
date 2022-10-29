@@ -7,9 +7,32 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
-  const [itemSet, setItemSet] = useState("nothing")
+  const [itemSet, setItemSet] = useState(() => {
+    if (localStorage.getItem('trackedHabits') != null) {
+      const somevar = JSON.parse(localStorage.getItem('trackedHabits'))
+      return somevar
+    } else {
+      return ''
+    }
+  })
+  
   const [track, setTrack] = useState(1)
+  
+  // Setting colors of squares using data form local storage
+  const dataSetting = () => {
+    for (let i = 0; i < itemSet.length; i++) {
+      const element = itemSet[i]
+      document.getElementById(itemSet[i].id).classList.add(itemSet[i].class)
+    }
+  }
+  
+  // Launching it on first load
+  useEffect(() => {
+    dataSetting()
+  }, [])
+  
 
+  // function that gets data from local storage
   const getDataFromStorage = () => {
 
     if (localStorage.getItem('trackedHabits') != null) {
@@ -19,13 +42,13 @@ function App() {
       console.log("no such Item");
     }
   }
-  useEffect(() => { getDataFromStorage() }, [])
 
-  const postDataToStorage = (itemSet) => {
-    if (localStorage.getItem('trackedHabits') != null) {
-      localStorage.setItem(`${itemSet}`)
-    }
-  }
+  // setting Items to local storage whenever itemSet changes
+  useEffect(() => {
+    localStorage.setItem("trackedHabits", JSON.stringify(itemSet))
+  }, [itemSet])
+
+
 
   return (
     <div className='page'>
@@ -36,7 +59,7 @@ function App() {
         itemSet={itemSet}
         setItemSet={setItemSet}
         setTrack={setTrack}
-        postDataToStorage={postDataToStorage}
+        
       />
 
 

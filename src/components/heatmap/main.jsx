@@ -85,7 +85,7 @@ export const Heatmap = () => {
     const showDataHM = (event) => {
         let x = 10 + document.getElementById(event.target.id).getBoundingClientRect().left;
         let y = document.getElementById(event.target.id).getBoundingClientRect().top - 20;
-        if (event.target.id != "pusto-empty-pusto") {
+        if (event.target.id != "pusto-empty-pusto" && event.target.id != "pusto-undefined-pusto") {
             let info = document.getElementById("infoBox")
             info.style.left = `${x}px`
             info.style.top = `${y}px`

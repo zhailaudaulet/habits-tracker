@@ -7,10 +7,11 @@ import { AddNewHabit } from './addHabbits';
 
 export const Habit = ({ itemSet, setItemSet, habits, setHabits }) => {
 
-    // const [showHabitAdder, setShowHabitAdder] = useState(false)
-    // const addNewHabit = () => {
-    //     setShowHabitAdder(current => !current)
-    // }
+
+    const [showHabitAdder, setShowHabitAdder] = useState(false)
+    const showAdder = () => {
+        setShowHabitAdder(current => !current)
+    }
 
 
     const trackTheHabbit = () => {
@@ -57,7 +58,7 @@ export const Habit = ({ itemSet, setItemSet, habits, setHabits }) => {
                             <div>{item.name}</div>
                         </div>
                     ))
-                    : <div className='habitAddButton' >
+                    : <div className='habitAddButton' onClick={() => showAdder()}>
                         <div className='text'>+</div>
                     </div>}
 
@@ -66,8 +67,11 @@ export const Habit = ({ itemSet, setItemSet, habits, setHabits }) => {
                 <button className='button' onClick={() => trackTheHabbit()}>
                     Track the habit
                 </button>
-                {/* {showHabitAdder && <AddNewHabit/>} */}
-                
+                {showHabitAdder && <AddNewHabit
+                    setShowHabitAdder={setShowHabitAdder}
+
+                />}
+
             </div>
         </>
     )

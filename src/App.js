@@ -22,7 +22,7 @@ function App() {
     if (localStorage.getItem('habitNames') != null) {
       return JSON.parse(localStorage.getItem('habitNames'))
     } else {
-      return [{name:"gym", class:"ok", sqclass:"basicClass"}]
+      return [{ name: "gym", class: "ok", sqclass: "basicClass" }]
     }
   })
 
@@ -37,9 +37,9 @@ function App() {
   }
 
   // Launching it on first load
-  useEffect(() => {
-    dataSetting()
-  }, [itemSet])
+  // useEffect(() => {
+  //   dataSetting()
+  // }, [itemSet])
 
 
   // function that gets data from local storage
@@ -66,7 +66,10 @@ function App() {
     <div className='page'>
       <Navbar />
       <div style={{ "position": "absolute" }}> Habit tracker </div>
-      <Heatmap />
+      <Heatmap
+        dataSetting={dataSetting}
+        itemSet={itemSet}
+      />
       <Habit
         itemSet={itemSet}
         setItemSet={setItemSet}

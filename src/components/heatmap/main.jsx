@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
 import "./heatmap.css";
 import { v4 as uuid } from 'uuid';
 import { local } from 'd3';
 
-export const Heatmap = () => {
+export const Heatmap = ({ dataSetting, itemSet }) => {
 
-    
-    
+    const [dayList, setDayList] = useState([])
 
 
-    
+
+
 
     const getDaysArray = () => {
         var daylist = [[], [], [], [], [], [], [], [], [], [], [], [], []]
@@ -19,7 +19,7 @@ export const Heatmap = () => {
         const currentYear = today.getFullYear()
         endday.setFullYear(currentYear - 1)
 
-        for (let i = 0; i < endday.getDay(); i++) {
+        for (let i = 0; i < endday.getDay() - 1; i++) {
             daylist[0].push(
                 {
                     data:
@@ -78,9 +78,16 @@ export const Heatmap = () => {
 
         }
 
-        return daylist
+
+        setDayList(daylist)
     }
-    let daylist = getDaysArray()
+
+    useEffect(() => {
+        getDaysArray()
+    },[])
+
+
+
 
     const showDataHM = (event) => {
         let x = 10 + document.getElementById(event.target.id).getBoundingClientRect().left;
@@ -90,7 +97,7 @@ export const Heatmap = () => {
             info.style.left = `${x}px`
             info.style.top = `${y}px`
             info.textContent = `${event.target.id}`
-            setTimeout(()=>{
+            setTimeout(() => {
                 info.style.display = "flex"
             }, 500)
         }
@@ -110,7 +117,7 @@ export const Heatmap = () => {
                 <div>Sat</div>
 
             </div>
-            {daylist.map((monthArray, index) => (
+            {dayList.map((monthArray, index) => (
                 <div className='months' key={uuid()} month={index}>
 
                     {monthArray.map((item) => (

@@ -48,3 +48,14 @@
     justify-content: center;
     align-self: flex-end;
 }
+
+.colorPicker{
+    margin-left: 5.5px;
+}
+
+.theAddButton{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+}

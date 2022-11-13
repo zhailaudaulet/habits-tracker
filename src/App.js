@@ -28,18 +28,25 @@ function App() {
 
   const [track, setTrack] = useState(1)
 
+  const [color, setColor] = useState("#aabbcc")
+  const [name, setName] = useState('')
+
   // Setting colors of squares using data form local storage
   const dataSetting = () => {
     for (let i = 0; i < itemSet.length; i++) {
       const element = itemSet[i]
-      document.getElementById(itemSet[i].id).classList.add(itemSet[i].class)
+      document.getElementById(itemSet[i].id).style.backgroundColor = `${itemSet[i].color}`
     }
   }
 
   // Launching it on first load
-  // useEffect(() => {
-  //   dataSetting()
-  // }, [itemSet])
+  useEffect(() => {
+    setTimeout(() => {
+      dataSetting();
+    }, "300")
+
+
+  }, [itemSet])
 
 
   // function that gets data from local storage
@@ -71,11 +78,16 @@ function App() {
         itemSet={itemSet}
       />
       <Habit
+        name={name}
+        setName={setName}
+        color={color}
+        setColor={setColor}
         itemSet={itemSet}
         setItemSet={setItemSet}
         setTrack={setTrack}
         habits={habits}
         setHabits={setHabits}
+        dataSetting={dataSetting}
       />
 
 

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import "./index.css";
 import { HexColorPicker } from "react-colorful";
 
-export const AddNewHabit = ({setShowHabitAdder}) => {
+export const AddNewHabit = ({ setShowHabitAdder, habits, setHabits }) => {
 
     const closeAdder = () => {
         setShowHabitAdder(current => !current)
@@ -11,25 +11,45 @@ export const AddNewHabit = ({setShowHabitAdder}) => {
 
     const [inputVal, setInputVal] = useState('')
     const [color, setColor] = useState("#aabbcc")
-    
+
     useEffect(() => {
         document.getElementById("colorButton").style.backgroundColor = color
     }, [color])
 
-    const [showPicker, setShowPicker]  = useState(false)
+    const [showPicker, setShowPicker] = useState(false)
     const colorPickerVisible = () => {
         setShowPicker(current => !current)
     }
 
     const handleAddHabit = () => {
         let naming = ''
-        if (inputVal.length > 6) {
+        if (inputVal.length > 12) {
             naming += inputVal[0]
             for (let i = 0; i < inputVal.length; i++) {
                 if (inputVal[i] === " ") {
-                    naming += inputVal[i+1]
+                    naming += inputVal[i + 1]
                 }
             }
+        } else{
+            naming += inputVal
+        }
+
+
+        if (habits.length === 0) {
+
+            setHabits([
+                {
+                    name: `${naming}`,
+                    color: `${color}`
+                }
+            ])
+        } else {
+
+            setHabits(currentList => [...habits, {
+                name: `${naming}`,
+                color: `${color}`
+            }])
+
         }
         console.log(color);
     }
@@ -42,14 +62,14 @@ export const AddNewHabit = ({setShowHabitAdder}) => {
                 <div className='topText'>Add a new habbit</div>
 
                 <div className='regularText'>Enter the title: </div>
-                <input type={"text"} placeholder={"Type the name of the habit"} className='addInput' onChange={(event) => setInputVal(event.target.value)}/>
+                <input type={"text"} placeholder={"Type the name of the habit"} className='addInput' onChange={(event) => setInputVal(event.target.value)} />
 
-                <div style={{display:"flex", flexDirection:"row", justifyContent:"center", alignItems:"center"}}>
+                <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
                     <div className='regularText'>Choose the color: </div>
                     <button className='colorButton' id='colorButton' onClick={() => colorPickerVisible()}></button>
                 </div>
-                {showPicker && <HexColorPicker className='colorPicker' color={color} onChange={(value) => setColor(value)}  />}
-                <button className = 'theAddButton' onClick={() => handleAddHabit()}>Add</button>
+                {showPicker && <HexColorPicker className='colorPicker' color={color} onChange={(value) => setColor(value)} />}
+                <button className='theAddButton' onClick={() => handleAddHabit()}>Add</button>
             </div>
         </>
     )

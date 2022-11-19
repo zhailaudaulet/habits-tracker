@@ -18,7 +18,7 @@
 .habitNames {
     width: 100vw;
     height: 60px;
-    background-color: aquamarine;
+    background-color: teal;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,10 +35,13 @@
     margin-right: 5px;
     user-select: none;
     cursor: pointer;
+    -webkit-box-shadow: -8px 0px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: -8px 0px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: -8px 0px 8px 0px rgba(34, 60, 80, 0.2);
 }
 
 
-.habitAddButton{
+.habitAddButton {
     height: fit-content;
     width: fit-content;
     display: flex;
@@ -49,17 +52,21 @@
     color: white;
     border-radius: 30px;
     margin-right: 5px;
+    -webkit-box-shadow: -4px -4px 4px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: -4px -4px 4px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: -4px -4px 4px 0px rgba(34, 60, 80, 0.2);
 }
 
-.text{
+.text {
     margin: 0;
     user-select: none;
 }
 
-.habitAddButton:hover{
+.habitAddButton:hover {
     transform: scale(1.2);
     cursor: grab;
 }
-.habitAddButton:active{
+
+.habitAddButton:active {
     transform: scale(1.1);
 }

@@ -9,6 +9,7 @@ export const Habit = ({ itemSet, setItemSet, habits, setHabits, color, setColor,
 
 
     const [showHabitAdder, setShowHabitAdder] = useState(false)
+    const [showBtn, setShowBtn] = useState(false)
     const showAdder = () => {
         setShowHabitAdder(current => !current)
     }
@@ -33,6 +34,7 @@ export const Habit = ({ itemSet, setItemSet, habits, setHabits, color, setColor,
             for (let i = 0; i < itemSet.length; i++) {
                 if (itemSet[i].id === `${dayData}` && itemSet[i].color === color) {
                     count++
+                    setShowBtn(false)
                     break
                 }
             }
@@ -47,29 +49,41 @@ export const Habit = ({ itemSet, setItemSet, habits, setHabits, color, setColor,
             }
         }
 
-
-
     }
 
 
 
 
-    const handleClickBox = (color, name) => {
-        setColor(color)
+    const [selectedColor, setSelectedColor] = useState(color)
+
+    const handleClickBox = (colorr, name) => {
+        setColor(colorr)
         setName(name)
-
+        setShowBtn(true)
+        setSelectedColor(colorr)
     }
 
 
+    useEffect(() => {
+        setTimeout(() => {
+            for (let i = 0; i < itemSet.length; i++) {   
+                    
+                if (itemSet[i].color === selectedColor) {
+                    console.log(`${itemSet[i].color} == ${selectedColor}??`);  
+                    document.getElementById(`${itemSet[i].id}`).style.backgroundColor = `${selectedColor}`
+                }
+            }
+        }, "200")
+    }, [selectedColor])
 
     return (
         <>
-            <div className='habitNames'>
+            <div className='habitNames' style={{backgroundColor : `${color}`}}>
 
                 {habits.length !== 0 ?
                     <>
                         {habits.map((item, index) => (
-                            <div key={uuid()} className='habitNameBlocks' id={item.name} index={index} style={{ backgroundColor: `${item.color}` }} onClick={() => handleClickBox(item.color, item.name)}>
+                            <div key={uuid()} className='habitNameBlocks' id={item.name} index={index} style={{ backgroundColor: `${item.color}`}} onClick={() => handleClickBox(item.color, item.name)}>
                                 <div>{item.name}</div>
                             </div>
                         ))}
@@ -85,9 +99,11 @@ export const Habit = ({ itemSet, setItemSet, habits, setHabits, color, setColor,
 
             </div>
             <div className='habitTrack'>
+                { showBtn &&
                 <button className='button' onClick={() => trackTheHabbit()}>
                     Track the habit
                 </button>
+                }
                 {showHabitAdder && <AddNewHabit
                     habits={habits}
                     setHabits={setHabits}

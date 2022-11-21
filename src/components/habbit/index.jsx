@@ -66,10 +66,9 @@ export const Habit = ({ itemSet, setItemSet, habits, setHabits, color, setColor,
 
     useEffect(() => {
         setTimeout(() => {
-            for (let i = 0; i < itemSet.length; i++) {   
-                    
+            for (let i = 0; i < itemSet.length; i++) {
+
                 if (itemSet[i].color === selectedColor) {
-                    console.log(`${itemSet[i].color} == ${selectedColor}??`);  
                     document.getElementById(`${itemSet[i].id}`).style.backgroundColor = `${selectedColor}`
                 }
             }
@@ -78,12 +77,12 @@ export const Habit = ({ itemSet, setItemSet, habits, setHabits, color, setColor,
 
     return (
         <>
-            <div className='habitNames' style={{backgroundColor : `${color}`}}>
+            <div className='habitNames' style={{ backgroundColor: `${color}` }}>
 
                 {habits.length !== 0 ?
                     <>
                         {habits.map((item, index) => (
-                            <div key={uuid()} className='habitNameBlocks' id={item.name} index={index} style={{ backgroundColor: `${item.color}`}} onClick={() => handleClickBox(item.color, item.name)}>
+                            <div key={uuid()} className='habitNameBlocks' id={item.name} index={index} style={{ backgroundColor: `${item.color}` }} onClick={() => handleClickBox(item.color, item.name)}>
                                 <div>{item.name}</div>
                             </div>
                         ))}
@@ -99,12 +98,13 @@ export const Habit = ({ itemSet, setItemSet, habits, setHabits, color, setColor,
 
             </div>
             <div className='habitTrack'>
-                { showBtn &&
-                <button className='button' onClick={() => trackTheHabbit()}>
-                    Track the habit
-                </button>
+                {showBtn &&
+                    <button className='button' onClick={() => trackTheHabbit()}>
+                        Track the habit
+                    </button>
                 }
                 {showHabitAdder && <AddNewHabit
+                    itemSet={itemSet}
                     habits={habits}
                     setHabits={setHabits}
                     setShowHabitAdder={setShowHabitAdder}

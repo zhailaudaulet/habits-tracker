@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import "./index.css";
 import { HexColorPicker } from "react-colorful";
 
-export const AddNewHabit = ({ setShowHabitAdder, habits, setHabits }) => {
+export const AddNewHabit = ({ setShowHabitAdder, habits, setHabits, itemSet }) => {
 
     const closeAdder = () => {
         setShowHabitAdder(current => !current)
@@ -22,6 +22,9 @@ export const AddNewHabit = ({ setShowHabitAdder, habits, setHabits }) => {
     }
 
     const handleAddHabit = () => {
+        let counter = 0
+
+
         let naming = ''
         if (inputVal.length > 12) {
             naming += inputVal[0]
@@ -30,28 +33,40 @@ export const AddNewHabit = ({ setShowHabitAdder, habits, setHabits }) => {
                     naming += inputVal[i + 1]
                 }
             }
-        } else{
+        } else {
             naming += inputVal
         }
 
+        for (let i = 0; i < itemSet.length; i++) {
+            if (itemSet[i].name !== naming) {
+                counter++
+            }
+        }
+        console.log(itemSet);
+        console.log(counter);
+        if (counter > 0) {
 
-        if (habits.length === 0) {
+            if (habits.length === 0) {
 
-            setHabits([
-                {
+                setHabits([
+                    {
+                        name: `${naming}`,
+                        color: `${color}`
+                    }
+                ])
+            } else {
+
+                setHabits(currentList => [...habits, {
                     name: `${naming}`,
                     color: `${color}`
-                }
-            ])
+                }])
+
+            }
         } else {
-
-            setHabits(currentList => [...habits, {
-                name: `${naming}`,
-                color: `${color}`
-            }])
-
+            alert("You already have tracker with this naming!")
         }
-        console.log(color);
+
+
     }
 
     return (

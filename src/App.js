@@ -72,7 +72,6 @@ function App() {
   return (
     <div className='page'>
       <Navbar />
-      <div style={{ "position": "absolute" }}> Habit tracker </div>
       <Heatmap
         dataSetting={dataSetting}
         itemSet={itemSet}

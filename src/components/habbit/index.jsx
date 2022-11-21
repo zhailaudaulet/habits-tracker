@@ -75,9 +75,16 @@ export const Habit = ({ itemSet, setItemSet, habits, setHabits, color, setColor,
         }, "200")
     }, [selectedColor])
 
+
+    const handleShowEverything = () => {
+        dataSetting()
+        // setShowBtn(false)
+        document.getElementById('habitNames').style.backgroundColor = "rgb(170, 187, 204)";
+    }
+
     return (
         <>
-            <div className='habitNames' style={{ backgroundColor: `${color}` }}>
+            <div className='habitNames' id='habitNames' style={{ backgroundColor: `${color}` }} onClick={() => handleShowEverything()}>
 
                 {habits.length !== 0 ?
                     <>
@@ -99,7 +106,7 @@ export const Habit = ({ itemSet, setItemSet, habits, setHabits, color, setColor,
             </div>
             <div className='habitTrack'>
                 {showBtn &&
-                    <button className='button' onClick={() => trackTheHabbit()}>
+                    <button className='button' style={{border:`5px solid ${selectedColor}`}} onClick={() => trackTheHabbit()}>
                         Track the habit
                     </button>
                 }

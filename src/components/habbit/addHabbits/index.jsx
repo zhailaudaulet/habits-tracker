@@ -22,9 +22,8 @@ export const AddNewHabit = ({ setShowHabitAdder, habits, setHabits, itemSet }) =
     }
 
     const handleAddHabit = () => {
+        setShowHabitAdder(false)
         let counter = 0
-
-
         let naming = ''
         if (inputVal.length > 12) {
             naming += inputVal[0]
@@ -37,34 +36,25 @@ export const AddNewHabit = ({ setShowHabitAdder, habits, setHabits, itemSet }) =
             naming += inputVal
         }
 
-        for (let i = 0; i < itemSet.length; i++) {
-            if (itemSet[i].name !== naming) {
-                counter++
-            }
-        }
-        console.log(itemSet);
-        console.log(counter);
-        if (counter > 0) {
 
-            if (habits.length === 0) {
 
-                setHabits([
-                    {
-                        name: `${naming}`,
-                        color: `${color}`
-                    }
-                ])
-            } else {
+        if (habits.length === 0) {
 
-                setHabits(currentList => [...habits, {
+            setHabits([
+                {
                     name: `${naming}`,
                     color: `${color}`
-                }])
-
-            }
+                }
+            ])
         } else {
-            alert("You already have tracker with this naming!")
+
+            setHabits(currentList => [...habits, {
+                name: `${naming}`,
+                color: `${color}`
+            }])
+
         }
+
 
 
     }

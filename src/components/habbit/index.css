@@ -11,14 +11,19 @@
 }
 
 .button {
-    height: fit-content;
-    width: fit-content;
+    height: 50px;
+    width: 150px;
+    border-radius: 10px;
+    border: 0px;
+    -webkit-box-shadow: 4px 3px 10px 0px rgba(34, 60, 80, 0.32);
+    -moz-box-shadow: 4px 3px 10px 0px rgba(34, 60, 80, 0.32);
+    box-shadow: 4px 3px 10px 0px rgba(34, 60, 80, 0.32);
 }
 
 .habitNames {
     width: 100vw;
     height: 60px;
-    background-color: teal;
+    background-color: rgb(170, 187, 204);
     display: flex;
     align-items: center;
     justify-content: center;

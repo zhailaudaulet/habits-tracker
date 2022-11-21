@@ -22,7 +22,7 @@ function App() {
     if (localStorage.getItem('habitNames') != null) {
       return JSON.parse(localStorage.getItem('habitNames'))
     } else {
-      return [{ name: "gym", color: "#da00ec" }]
+      return []
     }
   })
 

@@ -1,13 +1,16 @@
-:root{
+:root {
     --stBoxWidth: 1vw;
     --stBoxHeight: 1vw;
 }
 
 .heatmap {
     max-width: 1870px;
-    min-width: 1800px;
+    width: 90vw;
+    min-width: 640px;
     /* min-width: 2400px; */
-    height: calc(8*var(--stBoxHeight));
+    max-height: 160px;
+    height: 8.1vw;
+    min-height: 56px;
     /* min-height: calc(7*21px); */
     background-color: rgb(131, 130, 130);
     display: flex;
@@ -16,7 +19,7 @@
     border-radius: 5px;
     align-items: baseline;
     justify-content: center;
-    overflow: scroll;
+    overflow: visible;
     margin-bottom: 50px;
     padding: 5px;
 }
@@ -39,9 +42,9 @@
 .standard-box {
     margin: 1px;
     width: var(--stBoxWidth);
-    /* min-width: 20px; */
     height: var(--stBoxHeight);
-    /* min-height: 20px; */
+    min-width: 12.8px;
+    min-height: 12.8px;
     border-radius: 4.5px;
     background-color: rgb(194, 193, 193);
 }
@@ -51,11 +54,13 @@
     width: var(--stBoxWidth);
     /* min-width: 20px; */
     height: var(--stBoxHeight);
+    min-width: 12.8px;
+    min-height: 12.8px;
     /* min-height: 20px; */
     border-radius: 4.5px;
-    background-color:rgb(131, 130, 130);
 }
-.weeks{
+
+.weeks {
     padding-top: 5px;
     padding-bottom: 5px;
     margin-left: 5px;
@@ -67,7 +72,7 @@
     color: rgb(194, 193, 193);
 }
 
-.infoBox{
+.infoBox {
     position: absolute;
     width: fit-content;
     height: fit-content;

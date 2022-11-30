@@ -21,7 +21,10 @@
 }
 
 .habitNames {
-    width: 100vw;
+    width: fit-content;
+    padding-left: 40px;
+    padding-right: 30px;
+    border-radius: 30px;
     height: 60px;
     background-color: rgb(170, 187, 204);
     display: flex;

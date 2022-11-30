@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import "./heatmap.css";
 import { v4 as uuid } from 'uuid';
-import { local } from 'd3';
 
 export const Heatmap = ({ dataSetting, itemSet }) => {
 
@@ -11,7 +10,9 @@ export const Heatmap = ({ dataSetting, itemSet }) => {
 
 
 
-
+    /**
+     * ChupapiMunyanya
+     */
     const getDaysArray = () => {
         var daylist = [[], [], [], [], [], [], [], [], [], [], [], [], []]
         const today = new Date()
@@ -34,9 +35,9 @@ export const Heatmap = ({ dataSetting, itemSet }) => {
             )
 
         }
+        let weekn = 1
         let countMonthIndex = 0
-        while (today.getFullYear() !== endday.getFullYear() || today.getMonth() !== endday.getMonth() || today.getDate() >= endday.getDate()) {
-            // console.log("I work")
+        while (!(today.getFullYear() === endday.getFullYear() && today.getMonth() === endday.getMonth() && today.getDate() === endday.getDate())) {
             if (endday.getDate() === 1 && endday.getDay() !== 0) {
                 for (let i = 0; i < endday.getDay(); i++) {
                     daylist[countMonthIndex].push(
@@ -63,10 +64,10 @@ export const Heatmap = ({ dataSetting, itemSet }) => {
                         date: endday.getDate(), //1-31
                         day: endday.getDay(), //0-6
                         year: endday.getFullYear(), //?
-                        month: endday.getMonth()
-
+                        month: endday.getMonth(), 
                     },
-                    fill: "standard-box"
+                    fill: "standard-box",
+                    weekn: weekn
                 }
             )
 
@@ -74,10 +75,35 @@ export const Heatmap = ({ dataSetting, itemSet }) => {
             endday.setDate(endday.getDate() + 1)
             if (endday.getDate() === 1) {
                 countMonthIndex++
+                if (endday.getDay() === 0) {
+                    weekn = 0
+                } else{
+                    weekn = 1
+                }
+            }
+
+            if (endday.getDay() === 0) {
+                weekn++
             }
 
         }
+        
+        daylist[countMonthIndex].push(
+            {
+                data:
+                {
+                    date: endday.getDate(), //1-31
+                    day: endday.getDay(), //0-6
+                    year: endday.getFullYear(), //?
+                    month: endday.getMonth(),
+                },
+                fill: "standard-box",
+                weekn: weekn
+            }
+        )
 
+
+        console.log(daylist);
 
         setDayList(daylist)
     }
@@ -92,7 +118,7 @@ export const Heatmap = ({ dataSetting, itemSet }) => {
     const showDataHM = (event) => {
         let x = 10 + document.getElementById(event.target.id).getBoundingClientRect().left;
         let y = document.getElementById(event.target.id).getBoundingClientRect().top - 20;
-        if (event.target.id != "pusto-empty-pusto" && event.target.id != "pusto-undefined-pusto") {
+        if (event.target.id !== "pusto-empty-pusto" && event.target.id !== "pusto-undefined-pusto") {
             let info = document.getElementById("infoBox")
             info.style.left = `${x}px`
             info.style.top = `${y}px`
@@ -118,7 +144,7 @@ export const Heatmap = ({ dataSetting, itemSet }) => {
 
             </div>
             {dayList.map((monthArray, index) => (
-                <div className='months' key={uuid()} month={index}>
+                <div className='months' style={{width: monthArray[monthArray.length - 1].weekn * 22}} key={uuid()} month={index}>
 
                     {monthArray.map((item) => (
                         <div className={`${item.fill}`} key={uuid()} id={`${item.data.date}-${item.data.month}-${item.data.year}`} onMouseOver={showDataHM} onMouseOut={hideDataHM}>

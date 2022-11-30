@@ -1,16 +1,13 @@
 :root {
-    --stBoxWidth: 1vw;
-    --stBoxHeight: 1vw;
+    --stBoxWidth: 20px;
+    --stBoxHeight: 20px;
 }
 
 .heatmap {
-    max-width: 1870px;
-    width: 90vw;
-    min-width: 640px;
-    /* min-width: 2400px; */
-    max-height: 160px;
-    height: 8.1vw;
-    min-height: 56px;
+    width: 1760px;
+    /* min-width: 640px; */
+    height: 160px;
+    /* min-height: 56px; */
     /* min-height: calc(7*21px); */
     background-color: rgb(131, 130, 130);
     display: flex;
@@ -25,15 +22,15 @@
 }
 
 .months {
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     /* justify-content: center; */
     height: inherit;
     /* height: inherit; */
-    width: auto;
+    /* width: fit-content; */
     margin-right: 20px;
-    margin-top: auto;
+    /* margin-top: auto; */
     margin-left: 0%;
     /* justify-content: ; */
     /* align-items: flex-end; */

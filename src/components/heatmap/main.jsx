@@ -14,9 +14,9 @@ export const Heatmap = ({ dataSetting, itemSet }) => {
      * ChupapiMunyanya
      */
     const getDaysArray = () => {
-        var daylist = [[], [], [], [], [], [], [], [], [], [], [], [], []]
+        let daylist = [[], [], [], [], [], [], [], [], [], [], [], [], []];
         const today = new Date()
-        var endday = new Date()
+        let endday = new Date();
         const currentYear = today.getFullYear()
         endday.setFullYear(currentYear - 1)
 
@@ -103,7 +103,6 @@ export const Heatmap = ({ dataSetting, itemSet }) => {
         )
 
 
-        console.log(daylist);
 
         setDayList(daylist)
     }

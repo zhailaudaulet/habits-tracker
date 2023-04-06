@@ -34,9 +34,14 @@
     justify-self: center;
     margin-bottom: 5px;
     margin-left: 10px;
-    width: 15px;
-    height: 15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
     border: 1px solid black;
+}
+
+.colorButton:hover{
+    cursor: pointer;
 }
 
 .closeButton {

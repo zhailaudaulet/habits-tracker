@@ -1,9 +1,22 @@
 .navbar{
     height: 90px;
     width: 100vw;
-    box-shadow: 5px;
+    /*box-shadow: 5px;*/
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: large;
+    position: center;
+    -webkit-box-shadow: 0px 9px 14px -1px rgba(34, 60, 80, 0.25);
+    -moz-box-shadow: 0px 9px 14px -1px rgba(34, 60, 80, 0.25);
+    box-shadow: 0px 9px 14px -1px rgba(34, 60, 80, 0.25);
+
+}
+
+.logBut{
+    position: absolute;
+    right: 10px;
+    top: 30px;
+    background-color: #7fa8d1;
+    border: solid rgba(0, 0, 0, 0);
 }

@@ -10,7 +10,7 @@ export const AddNewHabit = ({ setShowHabitAdder, habits, setHabits, itemSet }) =
     }
 
     const [inputVal, setInputVal] = useState('')
-    const [color, setColor] = useState("#aabbcc")
+    const [color, setColor] = useState("#a503fc")
 
     useEffect(() => {
         document.getElementById("colorButton").style.backgroundColor = color
@@ -61,7 +61,7 @@ export const AddNewHabit = ({ setShowHabitAdder, habits, setHabits, itemSet }) =
 
     return (
         <>
-            <button>Add habbit</button>
+            <button>Add habit</button>
             <div className='addHabits'>
                 <button className='closeButton' onClick={() => closeAdder()}>x</button>
                 <div className='topText'>Add a new habbit</div>
